@@ -1,11 +1,11 @@
 import { Developer, Project, Skill, Service, Stats } from '../types/portfolio';
-// import juanferImage from '../assets/Juanfer.jpg';
+import juanferImage from '../assets/JuanferV2.png';
 
 export const developerData: Developer = {
   name: "Juan Pabón",
   title: "Full-Stack AI Developer",
   description: "Passionate developer with a keen eye for detail and a love for creating seamless user experiences. Specialized in Vue.js, Node.js, and modern web technologies.",
-  image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
+  image: juanferImage,
   email: "juanfernandopertuz@gmail.com",
   location: "Barranquilla, Co",
   phone: "+57 315 0602677",

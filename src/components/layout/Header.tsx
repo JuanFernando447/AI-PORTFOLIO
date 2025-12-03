@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Github, Linkedin, Twitter, Home, User, Briefcase, Settings, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { developerData } from '../../data/mockData';
+import juanferLogo from '../../assets/JuanLogoV2.svg';
 
 type SectionType = 'hero' | 'about' | 'portfolio' | 'services' | 'contact';
 
@@ -66,7 +67,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
             {/* Enhanced logo */}
             <div className="flex-shrink-0 group cursor-pointer" onClick={() => handleNavigation('/')}>
               <img 
-                src="/src/assets/JuanLogoV2.svg" 
+                src={juanferLogo} 
                 alt={developerData.name}
                 className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
               />
