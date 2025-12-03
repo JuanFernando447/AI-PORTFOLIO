@@ -5,6 +5,7 @@ import { AnimatedText } from '../ui/AnimatedText';
 import { ParticleBackground } from '../ui/ParticleBackground';
 import { FloatingElements } from '../ui/FloatingElements';
 import { developerData, statsData } from '../../data/mockData';
+import resumePDF from '../../assets/HojaDeVida.pdf';
 
 export const Hero: React.FC = () => {
   const [animatedStats, setAnimatedStats] = useState({
@@ -147,7 +148,8 @@ export const Hero: React.FC = () => {
                 variant="outline" 
                 size="lg"
                 icon={Download}
-                href="/resume.pdf"
+                href={resumePDF}
+                download="Juan_Pabon_Resume.pdf"
                 className="group relative overflow-hidden border-2 border-cyan-400/50 hover:border-cyan-400"
               >
                 <span className="relative z-10">Download Resume</span>

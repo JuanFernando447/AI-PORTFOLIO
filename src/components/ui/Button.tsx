@@ -1,5 +1,4 @@
 import React from 'react';
-import { DivideIcon as LucideIcon } from 'lucide-react';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -9,6 +8,7 @@ interface ButtonProps {
   iconPosition?: 'left' | 'right';
   onClick?: () => void;
   href?: string;
+  download?: string;
   className?: string;
   disabled?: boolean;
 }
@@ -21,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   iconPosition = 'left',
   onClick,
   href,
+  download,
   className = '',
   disabled = false
 }) => {
@@ -51,7 +52,11 @@ export const Button: React.FC<ButtonProps> = ({
   
   if (href) {
     return (
-      <a href={href} className={classes} target="_blank" rel="noopener noreferrer">
+      <a 
+        href={href} 
+        className={classes} 
+        {...(download ? { download } : { target: "_blank", rel: "noopener noreferrer" })}
+      >
         {content}
       </a>
     );
