@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Download, Mail, Sparkles, Code, Zap } from 'lucide-react';
+import { Download, Mail, Sparkles, Code, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { AnimatedText } from '../ui/AnimatedText';
 import { ParticleBackground } from '../ui/ParticleBackground';
@@ -10,7 +10,6 @@ export const Hero: React.FC = () => {
   const [animatedStats, setAnimatedStats] = useState({
     projectsCompleted: 0,
     yearsExperience: 0,
-    clientsSatisfied: 0,
     technologiesMastered: 0
   });
   const [isVisible, setIsVisible] = useState(false);
@@ -34,7 +33,6 @@ export const Hero: React.FC = () => {
     setTimeout(() => {
       animateValue('projectsCompleted', statsData.projectsCompleted);
       animateValue('yearsExperience', statsData.yearsExperience);
-      animateValue('clientsSatisfied', statsData.clientsSatisfied);
       animateValue('technologiesMastered', statsData.technologiesMastered);
     }, 1000);
   }, []);
@@ -103,11 +101,10 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Animated stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
+            <div className="grid grid-cols-3 gap-6 py-8">
               {[
                 { value: animatedStats.projectsCompleted, label: 'Projects', icon: Code, color: 'text-cyan-400' },
-                { value: animatedStats.yearsExperience, label: 'Years Exp', icon: Zap, color: 'text-green-400' },
-                { value: animatedStats.clientsSatisfied, label: 'Happy Clients', icon: Sparkles, color: 'text-blue-400' },
+                { value: animatedStats.yearsExperience, label: 'Months Exp', icon: Zap, color: 'text-green-400' },
                 { value: animatedStats.technologiesMastered, label: 'Technologies', icon: Code, color: 'text-purple-400' }
               ].map((stat, index) => {
                 const IconComponent = stat.icon;

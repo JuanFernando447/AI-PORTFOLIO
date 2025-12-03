@@ -1,25 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageSquare, Clock, AlertCircle, Loader2 } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { GlowCard } from '../ui/GlowCard';
 import { developerData } from '../../data/mockData';
+import { api, ContactFormData } from '../../services/api';
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
+interface ValidationErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  description?: string;
 }
 
 export const Contact: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    description: ''
   });
+  const [errors, setErrors] = useState<ValidationErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const [isVisible, setIsVisible] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
 
@@ -30,23 +33,101 @@ export const Contact: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof ValidationErrors]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: ValidationErrors = {};
+    let isValid = true;
+
+    // Name validation
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters long';
+      isValid = false;
+    } else if (formData.name.trim().length > 100) {
+      newErrors.name = 'Name must not exceed 100 characters';
+      isValid = false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!emailRegex.test(formData.email.trim())) {
+      newErrors.email = 'Email must be a valid email address';
+      isValid = false;
+    }
+
+    // Subject validation
+    if (!formData.subject.trim()) {
+      newErrors.subject = 'Subject is required';
+      isValid = false;
+    } else if (formData.subject.trim().length < 3) {
+      newErrors.subject = 'Subject must be at least 3 characters long';
+      isValid = false;
+    } else if (formData.subject.trim().length > 200) {
+      newErrors.subject = 'Subject must not exceed 200 characters';
+      isValid = false;
+    }
+
+    // Description validation
+    if (!formData.description.trim()) {
+      newErrors.description = 'Description is required';
+      isValid = false;
+    } else if (formData.description.trim().length < 10) {
+      newErrors.description = 'Description must be at least 10 characters long';
+      isValid = false;
+    } else if (formData.description.trim().length > 1000) {
+      newErrors.description = 'Description must not exceed 1000 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate form submission with realistic delay
-    await new Promise(resolve => setTimeout(resolve, 2500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after success message
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+    setStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const response = await api.sendContactForm(formData);
+      
+      if (response.success) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          description: ''
+        });
+        setErrors({});
+        // Reset success message after 5 seconds
+        setTimeout(() => setStatus('idle'), 5000);
+      } else {
+        setStatus('error');
+        setErrorMessage(response.message || 'Failed to send message');
+      }
+    } catch (error) {
+      setStatus('error');
+      setErrorMessage('An unexpected error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -74,7 +155,7 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <section className="h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden pt-20">
+    <section id="contact" className="h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden pt-20">
       {/* Dynamic background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/6 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl animate-pulse"></div>
@@ -178,7 +259,7 @@ export const Contact: React.FC = () => {
               isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
             }`}>
               <GlowCard className="p-8 relative overflow-hidden" glowColor="green">
-                {isSubmitted ? (
+                {status === 'success' ? (
                   <div className="text-center py-12">
                     <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
                       <CheckCircle className="w-8 h-8 text-black" />
@@ -189,7 +270,7 @@ export const Contact: React.FC = () => {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleSubmit} className="space-y-6" noValidate>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-300">
@@ -203,15 +284,20 @@ export const Contact: React.FC = () => {
                           onChange={handleInputChange}
                           onFocus={() => setFocusedField('name')}
                           onBlur={() => setFocusedField(null)}
-                          required
+                          disabled={isSubmitting}
                           className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
                             transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
-                            focusedField === 'name' 
-                              ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
-                              : 'border-gray-700 hover:border-gray-600'
+                            errors.name 
+                              ? 'border-red-500 focus:ring-red-500/50' 
+                              : focusedField === 'name' 
+                                ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
+                                : 'border-gray-700 hover:border-gray-600'
                           }`}
                           placeholder="Enter your full name"
                         />
+                        {errors.name && (
+                          <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-300">
@@ -225,15 +311,20 @@ export const Contact: React.FC = () => {
                           onChange={handleInputChange}
                           onFocus={() => setFocusedField('email')}
                           onBlur={() => setFocusedField(null)}
-                          required
+                          disabled={isSubmitting}
                           className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
                             transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
-                            focusedField === 'email' 
-                              ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
-                              : 'border-gray-700 hover:border-gray-600'
+                            errors.email
+                              ? 'border-red-500 focus:ring-red-500/50'
+                              : focusedField === 'email' 
+                                ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
+                                : 'border-gray-700 hover:border-gray-600'
                           }`}
                           placeholder="your.email@example.com"
                         />
+                        {errors.email && (
+                          <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                        )}
                       </div>
                     </div>
 
@@ -249,39 +340,56 @@ export const Contact: React.FC = () => {
                         onChange={handleInputChange}
                         onFocus={() => setFocusedField('subject')}
                         onBlur={() => setFocusedField(null)}
-                        required
+                        disabled={isSubmitting}
                         className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
                           transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
-                          focusedField === 'subject' 
-                            ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
-                            : 'border-gray-700 hover:border-gray-600'
+                          errors.subject
+                            ? 'border-red-500 focus:ring-red-500/50'
+                            : focusedField === 'subject' 
+                              ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
+                              : 'border-gray-700 hover:border-gray-600'
                         }`}
                         placeholder="What's your project about?"
                       />
+                      {errors.subject && (
+                        <p className="text-red-400 text-xs mt-1">{errors.subject}</p>
+                      )}
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+                      <label htmlFor="description" className="block text-sm font-medium text-gray-300">
                         Project Details *
                       </label>
                       <textarea
-                        id="message"
-                        name="message"
-                        value={formData.message}
+                        id="description"
+                        name="description"
+                        value={formData.description}
                         onChange={handleInputChange}
-                        onFocus={() => setFocusedField('message')}
+                        onFocus={() => setFocusedField('description')}
                         onBlur={() => setFocusedField(null)}
-                        required
                         rows={4}
+                        disabled={isSubmitting}
                         className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
                           transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm resize-none ${
-                          focusedField === 'message' 
-                            ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
-                            : 'border-gray-700 hover:border-gray-600'
+                          errors.description
+                            ? 'border-red-500 focus:ring-red-500/50'
+                            : focusedField === 'description' 
+                              ? 'border-cyan-400 focus:ring-cyan-400/50 bg-black/70' 
+                              : 'border-gray-700 hover:border-gray-600'
                         }`}
                         placeholder="Tell me about your project vision and requirements..."
                       />
+                      {errors.description && (
+                        <p className="text-red-400 text-xs mt-1">{errors.description}</p>
+                      )}
                     </div>
+
+                    {status === 'error' && (
+                      <div className="flex items-center space-x-2 text-red-400 bg-red-400/10 p-3 rounded-lg animate-fade-in">
+                        <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                        <span className="text-sm">{errorMessage}</span>
+                      </div>
+                    )}
 
                     <Button
                       type="submit"
@@ -294,7 +402,7 @@ export const Contact: React.FC = () => {
                       <span className="relative z-10">
                         {isSubmitting ? (
                           <div className="flex items-center justify-center space-x-2">
-                            <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
+                            <Loader2 className="w-5 h-5 animate-spin" />
                             <span>Sending Message...</span>
                           </div>
                         ) : (

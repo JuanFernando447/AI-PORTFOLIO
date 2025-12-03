@@ -171,7 +171,7 @@ export const Services: React.FC = () => {
                     <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-cyan-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                   </Button>
                   
-                  <Button
+                  {/* <Button
                     variant="outline"
                     size="lg"
                     onClick={navigateToPortfolio}
@@ -179,7 +179,7 @@ export const Services: React.FC = () => {
                   >
                     <span className="relative z-10">View My Work</span>
                     <div className="absolute inset-0 bg-green-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </GlowCard>

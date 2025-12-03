@@ -1,26 +1,25 @@
 import { Developer, Project, Skill, Service, Stats } from '../types/portfolio';
-import juanferImage from '../assets/Juanfer.jpg';
+// import juanferImage from '../assets/Juanfer.jpg';
 
 export const developerData: Developer = {
-  name: "Juan Pertuz",
+  name: "Juan Pabón",
   title: "Full-Stack AI Developer",
-  description: "Passionate junior developer with a keen eye for detail and a love for creating seamless user experiences. Specialized in React, Node.js, and modern web technologies.",
-  image: juanferImage,
+  description: "Passionate developer with a keen eye for detail and a love for creating seamless user experiences. Specialized in Vue.js, Node.js, and modern web technologies.",
+  image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800",
   email: "juanfernandopertuz@gmail.com",
   location: "Barranquilla, Co",
   phone: "+57 315 0602677",
   social: {
-    github: "https://github.com/alexrivera",
-    linkedin: "https://linkedin.com/in/alexrivera",
-    twitter: "https://twitter.com/alexrivera"
+    github: "https://github.com/JuanFernando447",
+    linkedin: "https://www.linkedin.com/in/juan-fernando-pertuz-pab%C3%B3n/",
+    // twitter: "https://twitter.com/alexrivera"
   }
 };
 
 export const statsData: Stats = {
-  projectsCompleted: 25,
-  yearsExperience: 2,
-  clientsSatisfied: 15,
-  technologiesMastered: 12
+  projectsCompleted: 5,
+  yearsExperience: 9,
+  technologiesMastered: 15
 };
 
 export const projectsData: Project[] = [
@@ -66,18 +65,41 @@ export const projectsData: Project[] = [
 ];
 
 export const skillsData: Skill[] = [
-  { name: "JavaScript", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "React", level: 88, category: "frontend" },
+  // Languages
+  { name: "JavaScript", level: 90, category: "languages" },
+  { name: "TypeScript", level: 85, category: "languages" },
+  { name: "Python", level: 75, category: "languages" },
+  
+  // Frontend
+  { name: "HTML", level: 95, category: "frontend" },
+  // { name: "React", level: 88, category: "frontend" },
   { name: "Vue.js", level: 75, category: "frontend" },
-  { name: "TailwindCSS", level: 90, category: "frontend" },
+  // { name: "Astro.js", level: 70, category: "frontend" },
+  // { name: "Next.js", level: 80, category: "frontend" },
+  
+  // Frontend Design
+  { name: "CSS", level: 90, category: "design" },
+  { name: "Sass", level: 85, category: "design" },
+  { name: "Tailwind", level: 90, category: "design" },
+  { name: "Bootstrap", level: 80, category: "design" },
+  // { name: "shadcn/ui", level: 85, category: "design" },
+  // { name: "Figma", level: 70, category: "design" },
+  
+  // Backend
   { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express.js", level: 78, category: "backend" },
-  { name: "PostgreSQL", level: 70, category: "backend" },
-  { name: "MongoDB", level: 75, category: "backend" },
-  { name: "Git", level: 85, category: "tools" },
-  { name: "Docker", level: 65, category: "tools" },
-  { name: "Figma", level: 70, category: "design" }
+  { name: "Express", level: 78, category: "backend" },
+  
+  // Databases
+  { name: "Firebase", level: 75, category: "database" },
+  // { name: "MongoDB", level: 75, category: "database" },
+  // { name: "SQL", level: 70, category: "database" },
+  { name: "PostgreSQL", level: 70, category: "database" },
+  
+  // Others
+  { name: "Git", level: 85, category: "others" },
+  // { name: "Docker", level: 65, category: "others" },
+  { name: "Postman", level: 80, category: "others" },
+  // { name: "Redux", level: 75, category: "others" }
 ];
 
 export const servicesData: Service[] = [
@@ -87,7 +109,7 @@ export const servicesData: Service[] = [
     description: "Creating responsive and interactive user interfaces using modern frameworks and best practices.",
     icon: "Code",
     features: [
-      "React & Vue.js Development",
+      "Vue.js Development",
       "Responsive Web Design",
       "Performance Optimization",
       "Cross-browser Compatibility"

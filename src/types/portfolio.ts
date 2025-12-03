@@ -9,7 +9,7 @@ export interface Developer {
   social: {
     github: string;
     linkedin: string;
-    twitter: string;
+    twitter?: string;
   };
 }
 
@@ -27,7 +27,7 @@ export interface Project {
 export interface Skill {
   name: string;
   level: number;
-  category: 'frontend' | 'backend' | 'tools' | 'design';
+  category: 'languages' | 'frontend' | 'backend' | 'database' | 'tools' | 'design' | 'others';
 }
 
 export interface Service {
@@ -41,6 +41,5 @@ export interface Service {
 export interface Stats {
   projectsCompleted: number;
   yearsExperience: number;
-  clientsSatisfied: number;
   technologiesMastered: number;
 }

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Twitter, Zap, Home, User, Briefcase, Settings, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Github, Linkedin, Twitter, Home, User, Briefcase, Settings, Mail } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { developerData } from '../../data/mockData';
 
 type SectionType = 'hero' | 'about' | 'portfolio' | 'services' | 'contact';
 
 const navigationItems = [
-  { name: 'Home', section: 'hero' as SectionType, icon: Home },
-  { name: 'About', section: 'about' as SectionType, icon: User },
-  { name: 'Portfolio', section: 'portfolio' as SectionType, icon: Briefcase },
-  { name: 'Services', section: 'services' as SectionType, icon: Settings },
-  { name: 'Contact', section: 'contact' as SectionType, icon: Mail }
+  { name: 'Home', section: 'hero' as SectionType, path: '/', icon: Home },
+  { name: 'About', section: 'about' as SectionType, path: '/about', icon: User },
+  // { name: 'Portfolio', section: 'portfolio' as SectionType, path: '/portfolio', icon: Briefcase },
+  { name: 'Services', section: 'services' as SectionType, path: '/services', icon: Settings },
+  { name: 'Contact', section: 'contact' as SectionType, path: '/contact', icon: Mail }
 ];
 
 interface HeaderProps {
@@ -20,11 +21,10 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
-  const navigateToSection = (section: SectionType) => {
-    if ((window as any).navigateToSection) {
-      (window as any).navigateToSection(section);
-    }
+  const handleNavigation = (path: string) => {
+    navigate(path);
     setIsMenuOpen(false);
   };
 
@@ -64,15 +64,12 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Enhanced logo */}
-            <div className="flex-shrink-0 group cursor-pointer" onClick={() => navigateToSection('hero')}>
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-green-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Zap className="w-5 h-5 text-black" />
-                </div>
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-white via-cyan-400 to-green-400 bg-clip-text text-transparent">
-                  {developerData.name.split(' ').map(name => name[0]).join('')}
-                </h1>
-              </div>
+            <div className="flex-shrink-0 group cursor-pointer" onClick={() => handleNavigation('/')}>
+              <img 
+                src="/src/assets/JuanLogoV2.svg" 
+                alt={developerData.name}
+                className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+              />
             </div>
 
             {/* Current section indicator */}
@@ -144,7 +141,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                 return (
                   <button
                     key={item.name}
-                    onClick={() => navigateToSection(item.section)}
+                    onClick={() => handleNavigation(item.path)}
                     className={`group w-full flex items-center space-x-4 px-6 py-4 rounded-xl font-medium transition-all duration-500 transform hover:scale-105 ${
                       isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
                     } ${
@@ -190,7 +187,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                 {[
                   { icon: Github, href: developerData.social.github, color: 'hover:text-purple-400' },
                   { icon: Linkedin, href: developerData.social.linkedin, color: 'hover:text-blue-400' },
-                  { icon: Twitter, href: developerData.social.twitter, color: 'hover:text-cyan-400' }
+                  // { icon: Twitter, href: developerData.social.twitter, color: 'hover:text-cyan-400' }
                 ].map((social, index) => {
                   const IconComponent = social.icon;
                   return (
@@ -216,7 +213,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => navigateToSection('contact')}
+                onClick={() => handleNavigation('/contact')}
                 className="w-full group relative overflow-hidden"
               >
                 <span className="relative z-10">Start a Project</span>
