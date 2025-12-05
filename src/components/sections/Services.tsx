@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Code, Server, Layers, ArrowRight, Zap, Sparkles } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { GlowCard } from '../ui/GlowCard';
@@ -11,6 +12,7 @@ const iconMap = {
 };
 
 export const Services: React.FC = () => {
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
@@ -19,15 +21,11 @@ export const Services: React.FC = () => {
   }, []);
 
   const navigateToContact = () => {
-    if ((window as any).navigateToSection) {
-      (window as any).navigateToSection('contact');
-    }
+    navigate('/contact');
   };
 
   const navigateToPortfolio = () => {
-    if ((window as any).navigateToSection) {
-      (window as any).navigateToSection('portfolio');
-    }
+    navigate('/portfolio');
   };
 
   return (

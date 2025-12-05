@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Download, Mail, Sparkles, Code, Zap } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { AnimatedText } from '../ui/AnimatedText';
@@ -8,6 +9,7 @@ import { developerData, statsData } from '../../data/mockData';
 import resumePDF from '../../assets/HojaDeVida.pdf';
 
 export const Hero: React.FC = () => {
+  const navigate = useNavigate();
   const [animatedStats, setAnimatedStats] = useState({
     projectsCompleted: 0,
     yearsExperience: 0,
@@ -39,9 +41,7 @@ export const Hero: React.FC = () => {
   }, []);
 
   const navigateToContact = () => {
-    if ((window as any).navigateToSection) {
-      (window as any).navigateToSection('contact');
-    }
+    navigate('/contact');
   };
 
   return (
