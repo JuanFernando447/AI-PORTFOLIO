@@ -6,7 +6,7 @@ import { AnimatedText } from '../ui/AnimatedText';
 import { ParticleBackground } from '../ui/ParticleBackground';
 import { FloatingElements } from '../ui/FloatingElements';
 import { developerData, statsData } from '../../data/mockData';
-import resumePDF from '../../assets/HojaDeVida.pdf';
+import resumePDF from '../../assets/CV.pdf';
 
 export const Hero: React.FC = () => {
   const navigate = useNavigate();
