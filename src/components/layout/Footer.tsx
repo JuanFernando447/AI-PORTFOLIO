@@ -30,9 +30,9 @@ export const Footer: React.FC = () => {
           <div className="space-y-6">
             <button
               onClick={scrollToTop}
-              className="group flex items-center space-x-3 hover:scale-105 transition-transform duration-300"
+              className="group flex items-center space-x-3 hover:scale-105 transition-transform duration-200"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-green-500 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
+              <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-green-500 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform duration-200">
                 <Zap className="w-6 h-6 text-black" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-white via-cyan-400 to-green-400 bg-clip-text text-transparent">
@@ -62,10 +62,10 @@ export const Footer: React.FC = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`p-4 bg-gray-800/50 rounded-xl text-gray-400 hover:text-white hover:bg-gray-700/50 
-                      transition-all duration-300 group hover:scale-110 hover:-translate-y-1 ${social.color}`}
+                      transition-all duration-200 group hover:scale-110 hover:-translate-y-1 ${social.color}`}
                     aria-label={social.label}
                   >
-                    <IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" />
+                    <IconComponent className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
                   </a>
                 );
               })}
@@ -78,9 +78,9 @@ export const Footer: React.FC = () => {
               onClick={scrollToTop}
               className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-cyan-400/10 to-green-400/10 
                 border border-cyan-400/30 rounded-xl text-cyan-400 hover:text-white hover:bg-cyan-400/20 
-                transition-all duration-300 group hover:scale-105"
+                transition-all duration-200 group hover:scale-105"
             >
-              <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
+              <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-200" />
               <span>Back to Top</span>
             </button>
           </div>
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
             </p>
             <a
               href={`mailto:${developerData.email}`}
-              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium break-all"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium break-all"
             >
               {developerData.email}
             </a>
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
               <button
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-cyan-400 to-green-500 
-                  text-black font-medium rounded-xl hover:scale-105 transition-transform duration-300"
+                  text-black font-medium rounded-xl hover:scale-105 transition-transform duration-200"
               >
                 <span>Start a Project</span>
                 <Zap className="w-4 h-4" />

@@ -69,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
               <img 
                 src={juanferLogo} 
                 alt={developerData.name}
-                className="h-12 w-auto group-hover:scale-110 transition-transform duration-300"
+                className="h-12 w-auto group-hover:scale-110 transition-transform duration-200"
               />
             </div>
 
@@ -84,18 +84,18 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
             {/* Enhanced hamburger menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={`hamburger-button relative p-3 text-gray-400 hover:text-white transition-all duration-300 hover:bg-gray-800/50 rounded-xl group ${
+              className={`hamburger-button relative p-3 text-gray-400 hover:text-white transition-all duration-200 hover:bg-gray-800/50 rounded-xl group ${
                 isMenuOpen ? 'z-50 text-white bg-gray-800/50' : 'z-40'
               }`}
             >
               <div className="relative w-6 h-6">
-                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-300 ${
+                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-200 ${
                   isMenuOpen ? 'rotate-45 top-3' : 'top-1'
                 }`}></span>
-                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-300 top-3 ${
+                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-200 top-3 ${
                   isMenuOpen ? 'opacity-0' : 'opacity-100'
                 }`}></span>
-                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-300 ${
+                <span className={`absolute block w-6 h-0.5 bg-current transform transition-all duration-200 ${
                   isMenuOpen ? '-rotate-45 top-3' : 'top-5'
                 }`}></span>
               </div>
@@ -143,7 +143,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                   <button
                     key={item.name}
                     onClick={() => handleNavigation(item.path)}
-                    className={`group w-full flex items-center space-x-4 px-6 py-4 rounded-xl font-medium transition-all duration-500 transform hover:scale-105 ${
+                    className={`group w-full flex items-center space-x-4 px-6 py-4 rounded-xl font-medium transition-all duration-200 transform hover:scale-105 ${
                       isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'
                     } ${
                       isActive
@@ -152,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                     }`}
                     style={{ transitionDelay: `${300 + index * 100}ms` }}
                   >
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-200 ${
                       isActive 
                         ? 'bg-gradient-to-r from-cyan-400 to-green-500 text-black' 
                         : 'bg-gray-800/50 text-gray-400 group-hover:bg-gray-700/50 group-hover:text-white'
@@ -171,7 +171,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                       </span>
                     </div>
 
-                    <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    <div className={`w-2 h-2 rounded-full transition-all duration-200 ${
                       isActive ? 'bg-cyan-400 shadow-lg shadow-cyan-400/50' : 'bg-transparent'
                     }`}></div>
                   </button>
@@ -198,9 +198,9 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`p-3 bg-gray-800/50 rounded-lg text-gray-400 hover:text-white hover:bg-gray-700/50 
-                        transition-all duration-300 group hover:scale-110 ${social.color}`}
+                        transition-all duration-200 group hover:scale-110 ${social.color}`}
                     >
-                      <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+                      <IconComponent className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
                     </a>
                   );
                 })}
@@ -218,7 +218,7 @@ export const Header: React.FC<HeaderProps> = ({ currentSection }) => {
                 className="w-full group relative overflow-hidden"
               >
                 <span className="relative z-10">Start a Project</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
               </Button>
             </div>
           </div>

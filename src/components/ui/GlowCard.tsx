@@ -26,7 +26,7 @@ export const GlowCard: React.FC<GlowCardProps> = ({
       className={`
         relative group bg-gradient-to-br from-gray-900/50 to-black/50 
         backdrop-blur-sm border border-gray-800/50 rounded-2xl 
-        transition-all duration-500 ease-out
+        transition-all duration-200 ease-out
         ${glowColors[glowColor as keyof typeof glowColors]}
         hover:shadow-2xl
         ${hoverScale ? 'hover:scale-105 hover:-translate-y-2' : ''}
@@ -34,7 +34,7 @@ export const GlowCard: React.FC<GlowCardProps> = ({
       `}
     >
       {/* Animated border gradient */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/20 via-transparent to-green-400/20 animate-pulse"></div>
       </div>
       

@@ -80,7 +80,7 @@ export const Services: React.FC = () => {
                       glowColor === 'cyan' ? 'from-cyan-400 to-blue-500' :
                       glowColor === 'green' ? 'from-green-400 to-emerald-500' :
                       'from-purple-400 to-pink-500'
-                    } rounded-2xl flex items-center justify-center mb-3 lg:mb-4 transform transition-all duration-300 ${
+                    } rounded-2xl flex items-center justify-center mb-3 lg:mb-4 transform transition-all duration-200 ${
                       hoveredService === service.id ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
                     }`}>
                       <IconComponent className="w-6 h-6 lg:w-8 lg:h-8 text-black" />
@@ -89,7 +89,7 @@ export const Services: React.FC = () => {
 
                   {/* Enhanced content */}
                   <div className="space-y-4">
-                    <h3 className={`text-xl font-bold transition-colors duration-300 ${
+                    <h3 className={`text-xl font-bold transition-colors duration-200 ${
                       hoveredService === service.id 
                         ? glowColor === 'cyan' ? 'text-cyan-400' :
                           glowColor === 'green' ? 'text-green-400' : 'text-purple-400'
@@ -107,7 +107,7 @@ export const Services: React.FC = () => {
                       {service.features.slice(0, 3).map((feature, featureIndex) => (
                         <li 
                           key={featureIndex} 
-                          className={`flex items-center text-sm text-gray-300 transform transition-all duration-300 ${
+                          className={`flex items-center text-sm text-gray-300 transform transition-all duration-200 ${
                             hoveredService === service.id ? 'translate-x-2' : 'translate-x-0'
                           }`}
                           style={{ transitionDelay: `${featureIndex * 100}ms` }}
@@ -128,7 +128,7 @@ export const Services: React.FC = () => {
                       icon={ArrowRight}
                       iconPosition="right"
                       onClick={navigateToContact}
-                      className={`mt-4 p-0 transition-all duration-300 ${
+                      className={`mt-4 p-0 transition-all duration-200 ${
                         glowColor === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' :
                         glowColor === 'green' ? 'text-green-400 hover:text-green-300' :
                         'text-purple-400 hover:text-purple-300'
@@ -166,7 +166,7 @@ export const Services: React.FC = () => {
                     className="group relative overflow-hidden"
                   >
                     <span className="relative z-10">Start a Project</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-cyan-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-cyan-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                   </Button>
                   
                   {/* <Button
@@ -176,7 +176,7 @@ export const Services: React.FC = () => {
                     className="group relative overflow-hidden border-2 border-green-400/50 hover:border-green-400"
                   >
                     <span className="relative z-10">View My Work</span>
-                    <div className="absolute inset-0 bg-green-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <div className="absolute inset-0 bg-green-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                   </Button> */}
                 </div>
               </div>

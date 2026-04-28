@@ -159,7 +159,7 @@ export const About: React.FC = () => {
                                 transitionDelay: `${500 + categoryIndex * 200 + skillIndex * 100}ms` 
                               }}
                             >
-                              <div className={`group px-4 py-2.5 rounded-lg border-2 transition-all duration-300 cursor-default ${
+                              <div className={`group px-4 py-2.5 rounded-lg border-2 transition-all duration-200 cursor-default ${
                                 categoryInfo.color === 'yellow' 
                                   ? 'bg-yellow-400/10 border-yellow-400/30 hover:border-yellow-400 hover:bg-yellow-400/20 hover:shadow-lg hover:shadow-yellow-400/20' :
                                 categoryInfo.color === 'cyan' 
@@ -172,7 +172,7 @@ export const About: React.FC = () => {
                                   ? 'bg-orange-400/10 border-orange-400/30 hover:border-orange-400 hover:bg-orange-400/20 hover:shadow-lg hover:shadow-orange-400/20' :
                                   'bg-purple-400/10 border-purple-400/30 hover:border-purple-400 hover:bg-purple-400/20 hover:shadow-lg hover:shadow-purple-400/20'
                               } hover:scale-105`}>
-                                <span className="text-gray-200 font-medium text-sm group-hover:text-white transition-colors duration-300">
+                                <span className="text-gray-200 font-medium text-sm group-hover:text-white transition-colors duration-200">
                                   {skill.name}
                                 </span>
                               </div>

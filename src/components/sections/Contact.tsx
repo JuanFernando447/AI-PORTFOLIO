@@ -212,7 +212,7 @@ export const Contact: React.FC = () => {
                           item.color === 'cyan' ? 'from-cyan-400 to-blue-500' :
                           item.color === 'green' ? 'from-green-400 to-emerald-500' :
                           'from-purple-400 to-pink-500'
-                        } rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        } rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
                           <IconComponent className="w-6 h-6 text-black" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -222,7 +222,7 @@ export const Contact: React.FC = () => {
                           ) : (
                             <a
                               href={item.href}
-                              className={`transition-colors duration-300 break-all ${
+                              className={`transition-colors duration-200 break-all ${
                                 item.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' :
                                 item.color === 'green' ? 'text-green-400 hover:text-green-300' :
                                 'text-purple-400 hover:text-purple-300'
@@ -286,7 +286,7 @@ export const Contact: React.FC = () => {
                           onBlur={() => setFocusedField(null)}
                           disabled={isSubmitting}
                           className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
-                            transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
+                            transition-all duration-200 focus:outline-none focus:ring-2 backdrop-blur-sm ${
                             errors.name 
                               ? 'border-red-500 focus:ring-red-500/50' 
                               : focusedField === 'name' 
@@ -313,7 +313,7 @@ export const Contact: React.FC = () => {
                           onBlur={() => setFocusedField(null)}
                           disabled={isSubmitting}
                           className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
-                            transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
+                            transition-all duration-200 focus:outline-none focus:ring-2 backdrop-blur-sm ${
                             errors.email
                               ? 'border-red-500 focus:ring-red-500/50'
                               : focusedField === 'email' 
@@ -342,7 +342,7 @@ export const Contact: React.FC = () => {
                         onBlur={() => setFocusedField(null)}
                         disabled={isSubmitting}
                         className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
-                          transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm ${
+                          transition-all duration-200 focus:outline-none focus:ring-2 backdrop-blur-sm ${
                           errors.subject
                             ? 'border-red-500 focus:ring-red-500/50'
                             : focusedField === 'subject' 
@@ -370,7 +370,7 @@ export const Contact: React.FC = () => {
                         rows={4}
                         disabled={isSubmitting}
                         className={`w-full px-4 py-3 bg-black/50 border rounded-xl text-white placeholder-gray-500 
-                          transition-all duration-300 focus:outline-none focus:ring-2 backdrop-blur-sm resize-none ${
+                          transition-all duration-200 focus:outline-none focus:ring-2 backdrop-blur-sm resize-none ${
                           errors.description
                             ? 'border-red-500 focus:ring-red-500/50'
                             : focusedField === 'description' 
@@ -410,7 +410,7 @@ export const Contact: React.FC = () => {
                         )}
                       </span>
                       {!isSubmitting && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
                       )}
                     </Button>
                   </form>

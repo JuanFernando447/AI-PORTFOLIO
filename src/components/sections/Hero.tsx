@@ -112,7 +112,7 @@ export const Hero: React.FC = () => {
                 return (
                   <div 
                     key={stat.label}
-                    className={`text-center transform transition-all duration-700 hover:scale-110 ${
+                    className={`text-center transform transition-all duration-200 hover:scale-110 ${
                       isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                     }`}
                     style={{ transitionDelay: `${1500 + index * 200}ms` }}
@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
                 className="group relative overflow-hidden"
               >
                 <span className="relative z-10">Let's Collaborate</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
               </Button>
               
               <Button 
@@ -153,7 +153,7 @@ export const Hero: React.FC = () => {
                 className="group relative overflow-hidden border-2 border-cyan-400/50 hover:border-cyan-400"
               >
                 <span className="relative z-10">Download Resume</span>
-                <div className="absolute inset-0 bg-cyan-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-cyan-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
               </Button>
             </div>
           </div>
@@ -179,7 +179,7 @@ export const Hero: React.FC = () => {
                 <img
                   src={developerData.image}
                   alt={developerData.name}
-                  className="w-full h-auto rounded-full shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto rounded-full shadow-2xl transform hover:scale-105 transition-transform duration-200"
                 />
                 
                 {/* Floating tech icons */}

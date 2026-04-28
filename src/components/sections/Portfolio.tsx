@@ -55,7 +55,7 @@ export const Portfolio: React.FC = () => {
               key={category}
               onClick={() => setActiveFilter(category)}
               className={`
-                px-6 py-2 rounded-full font-medium transition-all duration-300 relative overflow-hidden group text-sm
+                px-6 py-2 rounded-full font-medium transition-all duration-200 relative overflow-hidden group text-sm
                 ${activeFilter === category
                   ? 'bg-gradient-to-r from-purple-400 to-pink-500 text-black shadow-lg shadow-purple-400/25'
                   : 'bg-gray-800/50 text-gray-300 hover:bg-gray-700/50 hover:text-white border border-gray-700/50 hover:border-purple-400/50'
@@ -67,7 +67,7 @@ export const Portfolio: React.FC = () => {
                 {category === 'all' ? 'All Projects' : category}
               </span>
               {activeFilter !== category && (
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-400/10 to-pink-500/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></div>
               )}
             </button>
           ))}
@@ -92,14 +92,14 @@ export const Portfolio: React.FC = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-all duration-200 group-hover:scale-110"
                   />
                   
                   {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-200"></div>
                   
                   {/* Floating action buttons */}
-                  <div className={`absolute inset-0 flex items-center justify-center space-x-4 transition-all duration-300 ${
+                  <div className={`absolute inset-0 flex items-center justify-center space-x-4 transition-all duration-200 ${
                     hoveredProject === project.id ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
                   }`}>
                     {project.liveUrl && (
@@ -137,7 +137,7 @@ export const Portfolio: React.FC = () => {
                 {/* Enhanced project info */}
                 <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300 mb-2">
+                    <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-200 mb-2">
                       {project.title}
                     </h3>
                     <p className="text-gray-400 text-sm leading-relaxed">
@@ -152,7 +152,7 @@ export const Portfolio: React.FC = () => {
                         key={tech}
                         className={`px-3 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-full border border-gray-700/50 
                           hover:bg-purple-400/20 hover:text-purple-300 hover:border-purple-400/50 
-                          transition-all duration-300 cursor-default transform hover:scale-105`}
+                          transition-all duration-200 cursor-default transform hover:scale-105`}
                         style={{ transitionDelay: `${techIndex * 50}ms` }}
                       >
                         {tech}
