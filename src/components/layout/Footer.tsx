@@ -24,8 +24,8 @@ export const Footer: React.FC = () => {
         <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-green-400/5 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        <div className="grid md:grid-cols-3 gap-12 items-center mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 items-center mb-10 lg:mb-12 text-center md:text-left">
           {/* Enhanced brand section */}
           <div className="space-y-6">
             <button
@@ -91,7 +91,7 @@ export const Footer: React.FC = () => {
 
         {/* Enhanced bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2 text-gray-400">
+          <div className="flex items-center justify-center md:justify-start space-x-2 text-gray-400">
             <span>Made with</span>
             <Heart className="w-4 h-4 text-red-400 animate-pulse" />
             <span>by {developerData.name.split(' ')[0]}</span>
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
             </p>
             <a
               href={`mailto:${developerData.email}`}
-              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium"
+              className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300 font-medium break-all"
             >
               {developerData.email}
             </a>

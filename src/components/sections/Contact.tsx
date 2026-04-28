@@ -155,34 +155,34 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden pt-20">
+    <section id="contact" className="min-h-screen lg:h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative lg:overflow-hidden pt-20">
       {/* Dynamic background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/3 left-1/6 w-80 h-80 bg-cyan-400/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/3 right-1/6 w-80 h-80 bg-green-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 lg:h-full lg:flex lg:flex-col">
         {/* Enhanced header */}
         <div className={`text-center mb-8 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-green-500 rounded-xl flex items-center justify-center">
-              <MessageSquare className="w-6 h-6 text-black" />
+          <div className="flex items-center justify-center space-x-3 mb-4 lg:mb-6">
+            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-cyan-400 to-green-500 rounded-xl flex items-center justify-center">
+              <MessageSquare className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
             </div>
-            <h2 className="text-5xl font-bold">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
               <span className="text-white">Get In</span>{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-green-500 bg-clip-text text-transparent">Touch</span>
             </h2>
           </div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Ready to start your next project? Let's create something amazing together!
           </p>
         </div>
 
-        <div className="flex-1 overflow-y-auto pr-4">
-          <div className="grid lg:grid-cols-2 gap-12">
+        <div className="pb-8 lg:flex-1 lg:overflow-y-auto lg:pr-4">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Enhanced contact information */}
             <div className={`space-y-6 transform transition-all duration-1000 delay-300 ${
               isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
@@ -215,14 +215,14 @@ export const Contact: React.FC = () => {
                         } rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
                           <IconComponent className="w-6 h-6 text-black" />
                         </div>
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <h4 className="text-white font-semibold">{item.label}</h4>
                           {item.href.startsWith('#') ? (
-                            <p className="text-gray-300">{item.value}</p>
+                            <p className="text-gray-300 break-all">{item.value}</p>
                           ) : (
                             <a
                               href={item.href}
-                              className={`transition-colors duration-300 ${
+                              className={`transition-colors duration-300 break-all ${
                                 item.color === 'cyan' ? 'text-cyan-400 hover:text-cyan-300' :
                                 item.color === 'green' ? 'text-green-400 hover:text-green-300' :
                                 'text-purple-400 hover:text-purple-300'
@@ -258,7 +258,7 @@ export const Contact: React.FC = () => {
             <div className={`transform transition-all duration-1000 delay-500 ${
               isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
             }`}>
-              <GlowCard className="p-8 relative overflow-hidden" glowColor="green">
+              <GlowCard className="p-5 lg:p-8 relative overflow-hidden" glowColor="green">
                 {status === 'success' ? (
                   <div className="text-center py-12">
                     <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">

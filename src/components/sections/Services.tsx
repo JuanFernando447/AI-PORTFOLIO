@@ -29,34 +29,34 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <section className="h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden pt-20">
+    <section className="min-h-screen lg:h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative lg:overflow-hidden pt-20">
       {/* Dynamic background */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 flex flex-col lg:h-full">
         {/* Enhanced header */}
         <div className={`text-center mb-8 transform transition-all duration-1000 ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
         }`}>
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-cyan-500 rounded-xl flex items-center justify-center">
-              <Zap className="w-6 h-6 text-black" />
+          <div className="flex items-center justify-center space-x-3 mb-4 lg:mb-6">
+            <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-green-400 to-cyan-500 rounded-xl flex items-center justify-center">
+              <Zap className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
             </div>
-            <h2 className="text-5xl font-bold">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
               <span className="text-white">My</span>{' '}
               <span className="bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent">Services</span>
             </h2>
           </div>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             I offer comprehensive web development services to transform your ideas into powerful digital solutions.
           </p>
         </div>
 
         {/* Enhanced services grid */}
-        <div className="flex-1 overflow-y-auto pr-4">
+        <div className="pb-8 lg:flex-1 lg:overflow-y-auto lg:pr-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
             {servicesData.map((service, index) => {
               const IconComponent = iconMap[service.icon as keyof typeof iconMap];
@@ -66,7 +66,7 @@ export const Services: React.FC = () => {
               return (
                 <GlowCard
                   key={service.id}
-                  className={`p-8 transform transition-all duration-700 ${
+                  className={`p-5 lg:p-8 transform transition-all duration-700 ${
                     isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
                   }`}
                   style={{ transitionDelay: `${300 + index * 200}ms` }}
@@ -75,15 +75,15 @@ export const Services: React.FC = () => {
                   onMouseLeave={() => setHoveredService(null)}
                 >
                   {/* Enhanced icon */}
-                  <div className="mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-r ${
+                  <div className="mb-4 lg:mb-6">
+                    <div className={`w-12 h-12 lg:w-16 lg:h-16 bg-gradient-to-r ${
                       glowColor === 'cyan' ? 'from-cyan-400 to-blue-500' :
                       glowColor === 'green' ? 'from-green-400 to-emerald-500' :
                       'from-purple-400 to-pink-500'
-                    } rounded-2xl flex items-center justify-center mb-4 transform transition-all duration-300 ${
+                    } rounded-2xl flex items-center justify-center mb-3 lg:mb-4 transform transition-all duration-300 ${
                       hoveredService === service.id ? 'scale-110 rotate-6' : 'scale-100 rotate-0'
                     }`}>
-                      <IconComponent className="w-8 h-8 text-black" />
+                      <IconComponent className="w-6 h-6 lg:w-8 lg:h-8 text-black" />
                     </div>
                   </div>
 
@@ -146,12 +146,12 @@ export const Services: React.FC = () => {
           <div className={`transform transition-all duration-1000 delay-1000 ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
           }`}>
-            <GlowCard className="p-8 text-center relative overflow-hidden" glowColor="green">
-              <div className="relative z-10 space-y-6">
-                <div className="flex items-center justify-center space-x-4 mb-4">
-                  <Sparkles className="w-6 h-6 text-green-400 animate-pulse" />
-                  <h3 className="text-2xl font-bold text-white">Ready to Start Your Project?</h3>
-                  <Sparkles className="w-6 h-6 text-cyan-400 animate-pulse" style={{ animationDelay: '0.5s' }} />
+            <GlowCard className="p-5 lg:p-8 text-center relative overflow-hidden" glowColor="green">
+              <div className="relative z-10 space-y-4 lg:space-y-6">
+                <div className="flex items-center justify-center space-x-3 lg:space-x-4 mb-3 lg:mb-4">
+                  <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-green-400 animate-pulse" />
+                  <h3 className="text-xl lg:text-2xl font-bold text-white">Ready to Start Your Project?</h3>
+                  <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-cyan-400 animate-pulse" style={{ animationDelay: '0.5s' }} />
                 </div>
                 
                 <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">

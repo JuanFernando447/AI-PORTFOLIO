@@ -28,25 +28,25 @@ export const About: React.FC = () => {
   }, []);
 
   return (
-    <section className="h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative overflow-hidden pt-20">
+    <section className="min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black relative lg:overflow-hidden pt-20">
       {/* Background effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-400/5 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-16 items-start w-full py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-8 lg:h-full lg:flex lg:items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start w-full py-4 lg:py-8">
           {/* About Content */}
           <div className={`space-y-8 transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
           }`}>
             <div className="space-y-6">
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
-                  <Code className="w-6 h-6 text-black" />
+              <div className="flex items-center space-x-4 mb-6 lg:mb-8">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                  <Code className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
                 </div>
-                <h2 className="text-5xl font-bold">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                   <span className="text-white">About</span>{' '}
                   <span className="bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent">Me</span>
                 </h2>
@@ -101,11 +101,11 @@ export const About: React.FC = () => {
           <div className={`space-y-8 transform transition-all duration-1000 delay-300 ${
             isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
           }`}>
-            <div className="flex items-center space-x-4 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
-                <Wrench className="w-6 h-6 text-black" />
+            <div className="flex items-center space-x-4 mb-6 lg:mb-8">
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center">
+                <Wrench className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
               </div>
-              <h3 className="text-3xl font-bold text-white">Technical Arsenal</h3>
+              <h3 className="text-2xl lg:text-3xl font-bold text-white">Technical Arsenal</h3>
             </div>
             
             {/* Scrollable container with custom scrollbar and indicators */}
@@ -120,7 +120,7 @@ export const About: React.FC = () => {
                 </div>
               </div>
               
-              <div className="space-y-6 max-h-[calc(100vh-300px)] overflow-y-auto pr-2 custom-scrollbar">
+              <div className="space-y-6 max-h-[50vh] lg:max-h-[calc(100vh-300px)] overflow-y-auto pr-2 custom-scrollbar">
                 {Object.entries(groupedSkills).map(([category, skills], categoryIndex) => {
                   const categoryInfo = skillCategories[category as keyof typeof skillCategories];
                   const IconComponent = categoryInfo.icon;

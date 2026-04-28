@@ -1,8 +1,7 @@
 import React from 'react';
 
-interface GlowCardProps {
-  children: React.ReactNode;
-  className?: string;
+// Extends HTMLDivElement attributes to accept style, onMouseEnter, onMouseLeave, etc.
+interface GlowCardProps extends React.HTMLAttributes<HTMLDivElement> {
   glowColor?: string;
   hoverScale?: boolean;
 }
@@ -11,7 +10,8 @@ export const GlowCard: React.FC<GlowCardProps> = ({
   children, 
   className = '', 
   glowColor = 'cyan',
-  hoverScale = true 
+  hoverScale = true,
+  ...rest
 }) => {
   const glowColors = {
     cyan: 'hover:shadow-cyan-400/25 hover:border-cyan-400/50',
@@ -22,6 +22,7 @@ export const GlowCard: React.FC<GlowCardProps> = ({
 
   return (
     <div 
+      {...rest}
       className={`
         relative group bg-gradient-to-br from-gray-900/50 to-black/50 
         backdrop-blur-sm border border-gray-800/50 rounded-2xl 

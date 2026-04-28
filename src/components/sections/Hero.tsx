@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="h-screen w-full flex items-center justify-center relative overflow-hidden pt-20">
+    <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden pt-20">
       {/* Dynamic background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
         <ParticleBackground />
@@ -64,31 +64,31 @@ export const Hero: React.FC = () => {
         }}></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex items-center py-10 lg:h-full">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
           {/* Content */}
-          <div className={`space-y-8 transform transition-all duration-1000 ${
+          <div className={`space-y-6 lg:space-y-8 order-2 lg:order-1 transform transition-all duration-1000 ${
             isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
           }`}>
             {/* Greeting with icon */}
-            <div className="flex items-center space-x-3 mb-6">
+            <div className="flex items-center space-x-3 mb-4 lg:mb-6">
               <div className="p-2 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-lg">
-                <Sparkles className="w-6 h-6 text-black" />
+                <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
               </div>
-              <span className="text-cyan-400 font-medium text-lg">Hello, World! I'm</span>
+              <span className="text-cyan-400 font-medium text-base lg:text-lg">Hello, World! I'm</span>
             </div>
 
             {/* Name with gradient and animation */}
-            <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black leading-none">
+            <div className="space-y-3 lg:space-y-4">
+              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-black leading-none">
                 <span className="bg-gradient-to-r from-white via-cyan-400 to-green-400 bg-clip-text text-transparent animate-gradient-x">
                   {developerData.name}
                 </span>
               </h1>
               
               <div className="flex items-center space-x-3">
-                <Code className="w-8 h-8 text-cyan-400 animate-pulse" />
-                <h2 className="text-3xl md:text-4xl text-gray-300 font-light">
+                <Code className="w-6 h-6 lg:w-8 lg:h-8 text-cyan-400 animate-pulse" />
+                <h2 className="text-xl sm:text-3xl lg:text-4xl text-gray-300 font-light">
                   <AnimatedText text={developerData.title} delay={500} />
                 </h2>
               </div>
@@ -96,13 +96,13 @@ export const Hero: React.FC = () => {
             
             {/* Description with typewriter effect */}
             <div className="max-w-2xl">
-              <p className="text-xl text-gray-400 leading-relaxed">
+              <p className="text-base lg:text-xl text-gray-400 leading-relaxed">
                 <AnimatedText text={developerData.description} delay={2000} />
               </p>
             </div>
 
             {/* Animated stats */}
-            <div className="grid grid-cols-3 gap-6 py-8">
+            <div className="grid grid-cols-3 gap-2 sm:gap-6 py-4 lg:py-8">
               {[
                 { value: animatedStats.projectsCompleted, label: 'Projects', icon: Code, color: 'text-cyan-400' },
                 { value: animatedStats.yearsExperience, label: 'Months Exp', icon: Zap, color: 'text-green-400' },
@@ -117,13 +117,13 @@ export const Hero: React.FC = () => {
                     }`}
                     style={{ transitionDelay: `${1500 + index * 200}ms` }}
                   >
-                    <div className="flex items-center justify-center mb-2">
-                      <IconComponent className={`w-6 h-6 mr-2 ${stat.color}`} />
-                      <div className={`text-4xl font-bold ${stat.color}`}>
+                    <div className="flex items-center justify-center mb-1 lg:mb-2">
+                      <IconComponent className={`w-4 h-4 lg:w-6 lg:h-6 mr-1 lg:mr-2 ${stat.color}`} />
+                      <div className={`text-2xl lg:text-4xl font-bold ${stat.color}`}>
                         +{stat.value}
                       </div>
                     </div>
-                    <div className="text-sm text-gray-500 uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-xs lg:text-sm text-gray-500 uppercase tracking-wider leading-tight">{stat.label}</div>
                   </div>
                 );
               })}
@@ -159,10 +159,10 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Profile Image with advanced effects */}
-          <div className={`relative transform transition-all duration-1200 ${
+          <div className={`relative order-1 lg:order-2 transform transition-all duration-1200 ${
             isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
           }`} style={{ transitionDelay: '800ms' }}>
-            <div className="relative w-full max-w-lg mx-auto">
+            <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-lg mx-auto">
               {/* Multiple glow layers */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/30 to-green-400/30 rounded-full blur-3xl animate-pulse scale-110"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-2xl animate-pulse scale-125" style={{ animationDelay: '1s' }}></div>
@@ -183,14 +183,14 @@ export const Hero: React.FC = () => {
                 />
                 
                 {/* Floating tech icons */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                  <Code className="w-6 h-6 text-black" />
+                <div className="absolute -top-2 -right-2 lg:-top-4 lg:-right-4 w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center animate-bounce shadow-lg">
+                  <Code className="w-5 h-5 lg:w-6 lg:h-6 text-black" />
                 </div>
-                <div className="absolute -bottom-6 -left-6 w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
-                  <Zap className="w-5 h-5 text-black" />
+                <div className="absolute -bottom-4 -left-4 lg:-bottom-6 lg:-left-6 w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '1s' }}>
+                  <Zap className="w-4 h-4 lg:w-5 lg:h-5 text-black" />
                 </div>
-                <div className="absolute top-1/2 -left-8 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '0.5s' }}>
-                  <Sparkles className="w-4 h-4 text-black" />
+                <div className="absolute top-1/2 -left-6 lg:-left-8 w-7 h-7 lg:w-8 lg:h-8 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center animate-bounce shadow-lg" style={{ animationDelay: '0.5s' }}>
+                  <Sparkles className="w-3 h-3 lg:w-4 lg:h-4 text-black" />
                 </div>
               </div>
             </div>
